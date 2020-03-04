@@ -31,7 +31,8 @@ class SheetManager():
         request = resource.update(spreadsheetId=spreadsheetId,
                                   range=update_range,
                                   body={'values': values},
-                                  valueInputOption='USER_ENTERED')
+                                  valueInputOption='USER_ENTERED',
+                                  dateTimeRenderOption='FORMATTED_STRING')
         response = request.execute()
         return(response)
     
@@ -58,6 +59,7 @@ class SheetManager():
         resource = self.resource.get(spreadsheetId=spreadsheetId,
                                      ranges=ranges)
         return(resource.execute())
+
  
     def get_existing_sheets(self, spreadsheetId, ranges=None):
         spreadsheet_data = self.get(spreadsheetId=spreadsheetId, ranges=ranges)
